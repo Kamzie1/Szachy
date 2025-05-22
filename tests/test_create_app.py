@@ -5,5 +5,5 @@ def test_app_creation(app):
 
 def test_home_route(client):
     response = client.get('/')
-    assert response.status_code == 200
-    assert b"view" in response.data
+    assert response.status_code == 302
+

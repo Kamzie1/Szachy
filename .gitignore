@@ -11,3 +11,5 @@ venv/
 include/
 Lib/
 Scripts/
+/var
+/.vscode

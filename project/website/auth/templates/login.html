@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <h1> Login </h1>
+        <div class="form-container">
+            <label for="name">Nazwa</label>
+            <input type="text" id="name" class="form-input" name="name" placeholder="Podaj swoją nazwę: " autocomplete="username">
+            <label for="password">Hasło</label>
+            <input type="password" id="password" class="form-input" name="password" placeholder="Podaj swoje hasło: " autocomplete="current-password">
+        </div>
+        <br />
+        <button type="submit" class="login-button">Login</button>
+        <p class="login-option">Nie masz jeszcze konta?<a href="{{ url_for('auth.register') }}">zarejestruj się</a ></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base_view.html' %}
+{% block title %} Home {% endblock %}
+{% block users %}
+    {% if users: %}
+        {% for user in users: %}
+            <div class="user-holder">
+                <p class="user-name">{{user.name}}</p>
+                <p class="user-elo">{{user.elo}}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

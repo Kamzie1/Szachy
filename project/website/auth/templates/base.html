@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth/style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div class="message-error">
+                        {{ message }}
+                        <button class="del-flash"><span class="span-del-flash">&times;</span></button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="login-conatiner">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
