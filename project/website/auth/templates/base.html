@@ -7,22 +7,51 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
                 {% if category == 'error' %}
-                    <div class="message-error">
-                        {{ message }}
-                        <button class="del-flash"><span class="span-del-flash">&times;</span></button>
+                    <div class="alert error" role="alert">{{ message }}
+                        <button type="button" class="close_message" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% else %}
+                    <div class="alert success" role="alert">{{ message }}
+                        <button type="button" class="close_message" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 {% endif %}
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <div class="login-conatiner">
+    <div class="login-container">
         {% block content %}
 
         {% endblock %}
     </div>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+    // Pobierz wszystkie przyciski zamknięcia w alertach
+    const closeButtons = document.querySelectorAll('.close_message');
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Rodzic przycisku to div.alert
+        const alertDiv = this.parentElement;
+
+        // Dodaj animację zanikania (opcjonalnie)
+        alertDiv.style.transition = 'opacity 0.3s ease';
+        alertDiv.style.opacity = '0';
+
+        // Po zakończeniu animacji usuń element z DOM
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 300);
+      });
+    });
+  });
+    </script>
 </body>
 </html>

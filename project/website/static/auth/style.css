@@ -17,17 +17,91 @@ body{
     background-color: rgb(82, 80, 78);
 }
 
-.message-error {
-
+.alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  max-width: 90%;
+  padding: 15px 40px 15px 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1050;
+  box-sizing: border-box;
+  animation: slideDown 0.3s ease forwards;
 }
 
-.del-flash {
-
+/* Animacja pojawiania się */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
-.span-del-flash {
-
+/* Success - zielony */
+.alert.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
+
+/* Error - czerwony */
+.alert.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Przycisk zamykania wspólny styl */
+.alert .close_message {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Przycisk zamykania dla success */
+.alert.success .close_message {
+  color: #155724;
+}
+
+.alert.success .close_message:hover,
+.alert.success .close_message:focus {
+  color: #0b2e13;
+  background-color: rgba(21, 87, 36, 0.15);
+  box-shadow: 0 0 5px rgba(21, 87, 36, 0.6);
+}
+
+/* Przycisk zamykania dla error */
+.alert.error .close_message {
+  color: #721c24;
+}
+
+.alert.error .close_message:hover,
+.alert.error .close_message:focus {
+  color: #491217;
+  background-color: rgba(114, 28, 36, 0.15);
+  box-shadow: 0 0 5px rgba(114, 28, 36, 0.6);
+}
+
 
 form{
     height: 100%;
@@ -37,7 +111,7 @@ form{
     justify-content: space-around;
 }
 
-.login-conatiner {
+.login-container {
     flex-shrink: 0;
     height: 60vh;
     width: 30vw;

@@ -1,0 +1,17 @@
+{% extends "base_view.html" %}
+{% block title %}Statystyki{% endblock %}
+
+<div class="game-list">
+{%block content %}
+    {% for game in games %}
+        <div class="game-holder">
+            <p class="game-element" id="white-player">game.white_player.name</p>
+            <p id="black-player" class="game-element">game.black_player.name</p>
+            <p id="result" class="game-element">game.result</p>
+            <p id="date" class="game-element">game.date</p>
+            <a href="{{url_for('auth.login')}}" class="game-element"><p id="details">details</p></a>
+            <p id="fen" class="game-element">FEN</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+</div>

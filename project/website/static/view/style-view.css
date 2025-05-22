@@ -1,0 +1,167 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    font-family: Consolas, sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header{
+    flex: 1;
+    background-color: rgb(48, 46, 46);
+}
+
+.content-container{
+    flex: 24;
+    background-color: rgb(48, 46, 46);
+    display: flex;
+    flex-direction: row;
+}
+
+.footer {
+    flex: 1;
+    background-color: rgb(65, 62, 62);
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.users-container {
+    flex: 1;
+    color: rgb(9, 129, 49);
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    padding: 2%;
+}
+
+.user-holder{
+    display: flex;
+    flex-direction: row;
+    border: dotted rgb(9, 129, 49);
+    margin-bottom: 5%;
+}
+
+.user-name{
+    flex: 1;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.user-elo{
+    flex: 1;
+}
+
+.button-container{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.player-button{
+    height: 50%;
+    flex:1;
+    background-color: rgb(9, 129, 49);
+}
+
+.player-button:hover{
+    background-color: rgb(14, 172, 66);
+}
+
+.player-button:active{
+    background-color: rgb(6, 82, 31);
+}
+
+.stats-container {
+    flex: 6;
+    background-color: rgb(29, 28, 28);
+}
+
+a{
+    display: flex;
+    margin-left: 2%;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    text-decoration: none;
+    color: rgb(9, 129, 49);
+}
+
+.play{
+    margin-top: 30px;
+    border-bottom: solid;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input{
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: rgb(13, 43, 25);
+    height: 20px;
+    color: aliceblue;
+}
+
+.search-user{
+    margin-top: 30px;
+}
+
+.tytul{
+    width: 100px;
+    margin-left: 5%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    height: 100%;
+    color: rgb(9, 129, 49);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.game-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+    background-color: blueviolet;
+}
+
+.game-holder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+}
+
+.game-element{
+    flex:1;
+}
+
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+    background-color: blueviolet;
+}   
+
+

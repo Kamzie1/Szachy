@@ -3,30 +3,76 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='view/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='view/style-view.css') }}">
     <title>{% block title %} Base {% endblock %}</title>
 </head>
 <body>
-    <div class="users-conatiner">
-        {% block users %}
-
-        {% endblock %}
+  <nav class="header"><p class="tytul">Szachy.com</p></nav>
+  <div class="content-container">
+    <div class="users-container">
+      <div class="play">
+        <div class="user-holder">
+            <p class="user-name">{{c_user.name}}</p>
+            <p class="user-elo">{{c_user.elo}}</p>
+            <div class="button-container">
+              <a class="player-button" href="{{ url_for('view.stats', user_id=c_user.id) }}"></a>
+            </div>
+        </div>
+        <button class="player-button">Play</button>
+      </div>
+      <div class="search-user">
+        <input id="search" type="search" autocomplete="off" placeholder="Szukaj">
+        <div id="user-list"></div>
+      </div>
     </div>
     <div class="stats-container">
+      {% block content %}
 
+      {% endblock %}
     </div>
+  </div>
+  <nav class="footer">
+    <a class="logout" id="logout" href="{{ url_for('auth.logout') }}">Logout</a>
+  </nav>
+  <script>
+    let input = document.getElementById('search');
+    input.addEventListener('input', async function () {
+      let response = await fetch('/search?q=' + input.value);
+      let shows = await response.json();
+      let html = '';
+      for(let show of shows){
+        const statsLink = `stats/${show.id}`;
+        const chatLink = `chat/${show.chat}`;
+        html+='<div class="user-holder">'
+        html+=`<p class='user-name'>${show.name}</p>`;
+        html+=`<p class='user-elo'>${show.elo}</p>`;
+        html+=`<div class="button-container">
+                <a class="player-button" href="${statsLink}"></a>
+                <a class="player-button" href="${chatLink}"></a>
+              </div>`
+        html+='</div>'
+      }
+      document.getElementById('user-list').innerHTML = html;
+    });
 
-    <nav class="bottom">
-      <button type="button" class="logout" id="logout">Logout</button>
-    </nav>
-
-    <script>
-      document.getElementById("logout").addEventListener("click", function() {
-        window.location.href = "{{ url_for('auth.logout') }}";
-      });
-    </script>
-
-
-
+    window.addEventListener('load', async function(){
+      let response = await fetch('/search?q=');
+      let shows = await response.json();
+      let html = '';
+      for(let show of shows){
+        const statsLink = `/stats${show.id}`;
+        const chatLink = `/chat${show.chat}`;
+        html+='<div class="user-holder">'
+        html+=`<p class='user-name'>${show.name}</p>`;
+        html+=`<p class='user-elo'>${show.elo}</p>`;
+        html+=`<div class="button-container">
+                <a class="player-button" href="${statsLink}"></a>
+                <a class="player-button" href="${chatLink}"></a>
+              </div>`
+        html+='</div>'
+      }
+      document.getElementById('user-list').innerHTML = html;
+    });
+  </script>
 </body>
 </html>
