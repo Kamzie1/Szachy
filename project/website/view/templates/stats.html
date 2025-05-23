@@ -1,8 +1,9 @@
 {% extends "base_view.html" %}
 {% block title %}Statystyki{% endblock %}
 
-<div class="game-list">
+
 {%block content %}
+<div class="game-list">
     {% for game in games %}
         <div class="game-holder">
             <p class="game-element" id="white-player">game.white_player.name</p>
@@ -13,5 +14,5 @@
             <p id="fen" class="game-element">FEN</p>
         </div>
     {% endfor %}
-{% endblock %}
 </div>
+{% endblock %}

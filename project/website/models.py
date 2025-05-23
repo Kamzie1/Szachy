@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(200))
-    date = db.Column(db.DateTime(), default = datetime.utcnow)
+    date = db.Column(db.DateTime(), default = datetime.now)
 
     elo = db.Column(db.Integer, default=1000)
 
@@ -37,7 +37,7 @@ class Game(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     result = db.Column(sqlalchemy.Enum(ResultEnum))
-    date = db.Column(db.DateTime(), default = datetime.utcnow)
+    date = db.Column(db.DateTime(), default = datetime.now)
 
     white_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     black_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -69,7 +69,7 @@ class Chat_log(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     chat_id = db.Column(db.Integer(), db.ForeignKey('chat.id'), nullable = False)
     nadawca = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable = False)
-    date = db.Column(db.DateTime(), default = datetime.utcnow)
+    date = db.Column(db.DateTime(), default = datetime.now)
     message = db.Column(db.String(1000))
 
     chat = db.relationship('Chat', foreign_keys=[chat_id], back_populates='chat_log')

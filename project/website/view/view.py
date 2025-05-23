@@ -63,10 +63,17 @@ def stats(user_id):
 
     return render_template('stats.html', games=games, c_user = current_user)
 
-@view.route('/chat<chat_id>')
+@view.route('/chat<chat_id>',  methods = ['POST', 'GET'])
 @login_required
 def chat(chat_id):
     chat = Chat.query.filter(chat_id == Chat.id).first()
+    if request.method == "POST":
+        message = request.form.get("message")
+        if message:
+            new_message = Chat_log(chat_id = chat.id, message = message, nadawca = current_user.id)
+            db.session.add(new_message)
+            db.session.commit()
+
     if chat:
         messages = Chat_log.query.filter(chat.id == Chat_log.chat_id).all()
     else:

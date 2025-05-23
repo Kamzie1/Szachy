@@ -41,8 +41,8 @@
       let shows = await response.json();
       let html = '';
       for(let show of shows){
-        const statsLink = `stats/${show.id}`;
-        const chatLink = `chat/${show.chat}`;
+        const statsLink = `/stats/${show.id}`;
+        const chatLink = `/chat/${show.chat}`;
         html+='<div class="user-holder">'
         html+=`<p class='user-name'>${show.name}</p>`;
         html+=`<p class='user-elo'>${show.elo}</p>`;
@@ -73,6 +73,12 @@
       }
       document.getElementById('user-list').innerHTML = html;
     });
+
+    if ( window.history.replaceState ) {
+
+window.history.replaceState( null, null, window.location.href );
+
+}
   </script>
 </body>
 </html>
