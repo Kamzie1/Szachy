@@ -1,4 +1,4 @@
-from flask import  Blueprint, render_template, redirect, url_for, request, flash
+from flask import  Blueprint, render_template, redirect, url_for, request, flash, session
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..models import User, db
@@ -21,7 +21,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
-                print(f"name: {name}, password: {password}")
+                session['name'] = name
                 return redirect(url_for('view.home'))
             else:
                 flash("Błędna nazwa, lub hasło", category='error')
@@ -49,7 +49,7 @@ def register():
             new_user = User(name = name, password=generate_password_hash(password1, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
-            print(f"name: {name}, password: {password1}")
+            session['name'] = name
             login_user(new_user, remember=True)
             return redirect(url_for('view.home'))
     return render_template("register.html")

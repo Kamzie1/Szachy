@@ -2,6 +2,12 @@ html{
     margin: 0px;
     padding: 0px;
     font-family: Consolas, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body{
@@ -10,8 +16,8 @@ body{
     justify-content: center;
     padding: 0px;
     margin: 0px;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .header{
@@ -39,8 +45,8 @@ body{
     color: rgb(9, 129, 49);
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
     padding: 2%;
+    flex-shrink: 0;
 }
 
 .user-holder{
@@ -83,9 +89,33 @@ body{
     background-color: rgb(6, 82, 31);
 }
 
+.cancel-button-inactive{
+    height: 50%;
+    flex:1;
+    background-color:rgb(107, 128, 114);
+}
+
+.cancel-button-active{
+    height: 50%;
+    flex:1;
+    background-color:rgb(172, 38, 38);
+}
+
+.cancel-button-active:hover{
+    background-color: rgb(211, 50, 50);
+}
+
+.cancel-button-active:active{
+    background-color: rgb(128, 28, 28);
+}
+
 .stats-container {
     flex: 6;
     background-color: rgb(29, 28, 28);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
 }
 
 a{
@@ -117,6 +147,7 @@ input{
 
 .search-user{
     margin-top: 30px;
+    overflow-y: auto;
 }
 
 .tytul{
@@ -157,8 +188,7 @@ input{
 .chat-container{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    flex: 1;
     background-color: rgb(29, 28, 28);
     color: rgb(9, 129, 49);
     justify-content: center;
@@ -189,12 +219,12 @@ input{
     flex-direction: column;
     border: dotted rgb(9, 129, 49);
     width: 80%;
-    margin-bottom: 20px;
     background-color: rgb(53, 51, 51);
+    overflow-y: auto;
+    min-height: 0; 
 }
 
 .own-message{
-    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -203,7 +233,6 @@ input{
 }
 
 .other-message{
-    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -226,11 +255,9 @@ input{
 
 
 .send{
+    margin-top: 3%;
     width:80%;
     flex:1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 form{
@@ -262,4 +289,25 @@ form{
     flex:3;
     width: 80%;
     height: 40%;
+}
+
+::-webkit-scrollbar{
+    background-color: rgb(9, 129, 49);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(2, 61, 21);
+}
+
+::-webkit-scrollbar-button{
+    background-color: rgba(0, 0, 0, 0.603);
+}
+
+
+.content-container,
+.users-container,
+.stats-container,
+.chat-container {
+  min-height: 0;    
+  min-width: 0;     
 }

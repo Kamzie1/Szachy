@@ -1,20 +1,47 @@
 {% extends "base_view.html" %}
 {% block title %}Chat{% endblock %}
 
+{% block script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var element = document.getElementById("scrollableElement");
+            element.scrollTop = element.scrollHeight;
+        });
+        
+        function invite(chat_id){
+            const room_id = shortRoomId();
+            const message = `Wyzywam cię na pojedynek`;
+            socket.emit('challange', room_id, message, chat_id)
+        }
+
+        function join(room_id){
+            socket.emit('join', room_id)
+        }
+
+    </script>
+{% endblock %}
 
 {% block content %}
     <div class="chat-container">
-        {% if c_user.id == chat.user_2.id %}
+        {% if c_user.id == chat.user2.id %}
             <div class="chat-info"> <p class="user-name">{{chat.user1.name}}</p> <p class="user-name">{{chat.user2.name}}</p></div>
         {% else %}
             <div class="chat-info"> <p class="user-name">{{chat.user2.name}}</p> <p class="user-name">{{chat.user1.name}}</p></div>
         {% endif %}
-        <div class="message-container">
+        <div class="message-container" id="scrollableElement">
             {% for message in messages %}
-                {% if message.nadawca == c_user.id %}
-                    <div class="own-message"><p class="message">{{message.message}}</p><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                {% if message.link %}
+                    {% if message.nadawca == c_user.id %}
+                        <div class="own-message"><p class="message">{{message.message}}</p><a onClick="join('{{message.link}}')">link</a><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                    {% else %}
+                        <div class="other-message"><p class="message">{{message.message}}</p><a onClick="join('{{message.link}}')">link</a><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                    {% endif %}
                 {% else %}
-                    <div class="other-message"><p class="message">{{message.message}}</p><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                    {% if message.nadawca == c_user.id %}
+                        <div class="own-message"><p class="message">{{message.message}}</p><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                    {% else %}
+                        <div class="other-message"><p class="message">{{message.message}}</p><p class="date">{{message.date.strftime('%Y-%m-%d %H:%M')}}</p></div>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>

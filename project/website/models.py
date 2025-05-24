@@ -71,6 +71,7 @@ class Chat_log(db.Model):
     nadawca = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable = False)
     date = db.Column(db.DateTime(), default = datetime.now)
     message = db.Column(db.String(1000))
+    link = db.Column(db.String(100), default = None)
 
     chat = db.relationship('Chat', foreign_keys=[chat_id], back_populates='chat_log')
     user = db.relationship('User', foreign_keys=[nadawca], back_populates='chat_user')

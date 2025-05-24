@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, session
 from flask_login import current_user, login_required
 from ..models import User, Game, Chat, Chat_log
 from .. import db
@@ -7,8 +7,7 @@ view = Blueprint(
     "view",
     __name__,
     template_folder="templates",
-    static_folder = "static",
-    static_url_path="/view/static"
+    static_folder = "static"
 )
 
 
@@ -75,9 +74,11 @@ def chat(chat_id):
             db.session.commit()
 
     if chat:
+        if (current_user.id!=chat.user1_id and current_user.id != chat.user2_id):
+            return redirect(url_for('view.home'))
         messages = Chat_log.query.filter(chat.id == Chat_log.chat_id).all()
     else:
-        flash("Coś poszło nie tak", category='error')
+        print("Coś poszło nie tak")
         return redirect(url_for('view.home'))
 
     return render_template('chat.html', c_user = current_user, chat = chat, messages = messages)
