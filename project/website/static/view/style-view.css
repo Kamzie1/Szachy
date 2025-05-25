@@ -1,313 +1,313 @@
-html{
-    margin: 0px;
-    padding: 0px;
-    font-family: Consolas, sans-serif;
-    width: 100%;
-    height: 100%;
+html {
+  margin: 0px;
+  padding: 0px;
+  font-family: Consolas, sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    height: 100%;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
 }
 
-.header{
-    flex: 1;
-    background-color: rgb(48, 46, 46);
+.header {
+  flex: 1;
+  background-color: rgb(117, 62, 103);
 }
 
-.content-container{
-    flex: 24;
-    background-color: rgb(48, 46, 46);
-    display: flex;
-    flex-direction: row;
+.content-container {
+  flex: 24;
+  background-color: rgb(117, 62, 103);
+  display: flex;
+  flex-direction: row;
 }
 
 .footer {
-    flex: 1;
-    background-color: rgb(65, 62, 62);
-    padding: 0px;
-    margin: 0px;
+  flex: 1;
+  background-color: rgb(156, 116, 146);
+  padding: 0px;
+  margin: 0px;
 }
-
 
 .users-container {
-    flex: 1;
-    color: rgb(9, 129, 49);
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    flex-shrink: 0;
+  flex: 1;
+  color: rgb(207, 184, 201);
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  flex-shrink: 0;
 }
 
-.user-holder{
-    display: flex;
-    flex-direction: row;
-    border: dotted rgb(9, 129, 49);
-    margin-bottom: 5%;
+.user-holder {
+  display: flex;
+  flex-direction: row;
+  border: dotted rgb(129, 9, 9);
+  margin-bottom: 5%;
 }
 
-.user-name{
-    flex: 1;
-    margin-right: 5%;
-    margin-left: 5%;
+.user-name {
+  flex: 1;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
-.user-elo{
-    flex: 1;
+.user-elo {
+  flex: 1;
 }
 
-.button-container{
-    flex:1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-right: 5%;
+.button-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5%;
 }
 
-.player-button{
-    height: 50%;
-    flex:1;
-    background-color: rgb(9, 129, 49);
+.player-button {
+  height: 50%;
+  flex: 1;
+  background-color: rgb(151, 22, 119);
 }
 
-.player-button:hover{
-    background-color: rgb(14, 172, 66);
+.player-button:hover {
+  background-color: rgb(155, 9, 9);
 }
 
-.player-button:active{
-    background-color: rgb(6, 82, 31);
+.player-button:active {
+  background-color: rgb(63, 5, 5);
 }
 
-.cancel-button-inactive{
-    height: 50%;
-    flex:1;
-    background-color:rgb(107, 128, 114);
+.cancel-button-inactive {
+  height: 50%;
+  flex: 1;
+  background-color: rgb(107, 128, 114);
 }
 
-.cancel-button-active{
-    height: 50%;
-    flex:1;
-    background-color:rgb(172, 38, 38);
+.cancel-button-active {
+  height: 50%;
+  flex: 1;
+  background-color: rgb(255, 0, 0);
 }
 
-.cancel-button-active:hover{
-    background-color: rgb(211, 50, 50);
+.cancel-button-active:hover {
+  background-color: rgb(184, 0, 0);
 }
 
-.cancel-button-active:active{
-    background-color: rgb(128, 28, 28);
+.cancel-button-active:active {
+  background-color: rgb(128, 28, 28);
 }
 
 .stats-container {
-    flex: 6;
-    background-color: rgb(29, 28, 28);
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
+  flex: 6;
+  background-color: rgb(168, 43, 43);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
-a{
-    display: flex;
-    margin-left: 2%;
-    align-items: center;
-    justify-content: left;
-    height: 100%;
-    text-decoration: none;
-    color: rgb(9, 129, 49);
+a {
+  display: flex;
+  margin-left: 2%;
+  align-items: center;
+  justify-content: left;
+  height: 100%;
+  text-decoration: none;
+  color: rgb(168, 43, 43);
 }
 
-.play{
-    margin-top: 30px;
-    border-bottom: solid;
-    padding-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.play {
+  margin-top: 30px;
+  border-bottom: solid;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-input{
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: rgb(13, 43, 25);
-    height: 20px;
-    color: aliceblue;
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgb(168, 43, 43);
+  border: none;
+  height: 20px;
+  color: rgb(189, 152, 152);
 }
 
-.search-user{
-    margin-top: 30px;
-    overflow-y: auto;
+.search-user {
+  margin-top: 30px;
+  overflow-y: auto;
 }
 
-.tytul{
-    width: 100px;
-    margin-left: 5%;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    padding: 0px;
-    height: 100%;
-    color: rgb(9, 129, 49);
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
+.tytul {
+  width: 100px;
+  margin-left: 5%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  height: 100%;
+  color: rgb(189, 152, 152);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
 }
 
-.game-list{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(29, 28, 28);
+.game-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(175, 133, 133);
 }
 
-.game-holder{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 40px;
+.game-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
 }
 
-.game-element{
-    flex:1;
+.game-element {
+  flex: 1;
 }
 
-.chat-container{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: rgb(29, 28, 28);
-    color: rgb(9, 129, 49);
-    justify-content: center;
-    align-items: center;
-}   
-
-.chat-info{
-    width: 80%;
-    flex:1;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    font-size: larger;
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgb(197, 130, 130);
+  color: rgb(197, 18, 123);
+  justify-content: center;
+  align-items: center;
 }
 
-.user-name{
-    flex:2;
+.chat-info {
+  width: 80%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  font-size: larger;
 }
 
-.chat_id{
-    flex:1;
+.user-name {
+  flex: 2;
 }
 
-.message-container{
-    flex: 8;
-    display: flex;
-    flex-direction: column;
-    border: dotted rgb(9, 129, 49);
-    width: 80%;
-    background-color: rgb(53, 51, 51);
-    overflow-y: auto;
-    min-height: 0; 
+.chat_id {
+  flex: 1;
 }
 
-.own-message{
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
+.message-container {
+  flex: 8;
+  display: flex;
+  flex-direction: column;
+  border: dotted rgb(233, 14, 14);
+  width: 80%;
+  background-color: rgb(175, 131, 131);
+  overflow-y: auto;
+  min-height: 0;
 }
 
-.other-message{
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
+.own-message {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
 }
 
-.date{
-    font-size: small;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: lighter;
-    margin-right: 1%;
-    margin-left: 1%;
+.other-message {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
 }
 
-.message{
-    margin-right: 4%;
-    margin-left: 4%;
+.date {
+  font-size: small;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
+  margin-right: 1%;
+  margin-left: 1%;
 }
 
-
-.send{
-    margin-top: 3%;
-    width:80%;
-    flex:1;
+.message {
+  margin-right: 4%;
+  margin-left: 4%;
 }
 
-form{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    height: 100%;
+.send {
+  margin-top: 3%;
+  width: 80%;
+  flex: 1;
 }
 
-.button-send{
-    flex:1;
-    height: 50%;
-    margin: 0px;
-    margin-left: 10px;
-    background-color: rgb(8, 112, 43) ;
-    font-size: medium;
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
-.button-send:hover{
-    background-color: rgb(14, 172, 66);
+.button-send {
+  flex: 1;
+  height: 50%;
+  margin: 0px;
+  margin-left: 10px;
+  background-color: rgb(141, 29, 29);
+  font-size: medium;
 }
 
-.button-send:active{
-    background-color: rgb(6, 82, 31);
+.button-send:hover {
+  background-color: rgb(184, 42, 42);
 }
 
-.send-message{
-    flex:3;
-    width: 80%;
-    height: 40%;
+.button-send:active {
+  background-color: rgb(99, 15, 15);
 }
 
-::-webkit-scrollbar{
-    background-color: rgb(9, 129, 49);
+.send-message {
+  flex: 3;
+  width: 80%;
+  height: 40%;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: rgb(2, 61, 21);
+::-webkit-scrollbar {
+  background-color: rgba(175, 20, 111, 0.747);
 }
 
-::-webkit-scrollbar-button{
-    background-color: rgba(0, 0, 0, 0.603);
+::-webkit-scrollbar-thumb {
+  background-color: rgba(175, 20, 110, 0.555);
 }
 
+::-webkit-scrollbar-button {
+  background-color: rgba(223, 9, 134, 0.808);
+}
 
 .content-container,
 .users-container,
 .stats-container,
 .chat-container {
-  min-height: 0;    
-  min-width: 0;     
+  min-height: 0;
+  min-width: 0;
 }
