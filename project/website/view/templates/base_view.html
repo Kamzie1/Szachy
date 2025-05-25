@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='view/style-view.css') }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='view/style-view.css') }}"
+    />
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <title>{% block title %} Base {% endblock %}</title>
-</head>
-<body>
-  <nav class="header"><p class="tytul">Szachy.com</p></nav>
-  <div class="content-container">
-    <div class="users-container">
-      <div class="play">
-        <div class="user-holder">
+  </head>
+  <body>
+    <nav class="header"><p class="tytul">Szachy.com</p></nav>
+    <div class="content-container">
+      <div class="users-container">
+        <div class="play">
+          <div class="user-holder">
             <p class="user-name">{{c_user.name}}</p>
             <p class="user-elo">{{c_user.elo}}</p>
             <div class="button-container">
-              <a class="player-button" href="{{ url_for('view.stats', user_id=c_user.id) }}"></a>
+              <a
+                class="player-button"
+                href="{{ url_for('view.stats', user_id=c_user.id) }}"
+              ></a>
             </div>
+          </div>
+          <button class="player-button" id="find-game">Play</button
+          ><button class="cancel-button-inactive" id="cancel">Cancel</button>
         </div>
-        <button class="player-button" id="find-game">Play</button><button class="cancel-button-inactive" id="cancel">Cancel</button>
+        <div class="search-user">
+          <input
+            id="search"
+            type="search"
+            autocomplete="off"
+            placeholder="Szukaj"
+          />
+          <div id="user-list"></div>
+        </div>
       </div>
-      <div class="search-user">
-        <input id="search" type="search" autocomplete="off" placeholder="Szukaj">
-        <div id="user-list"></div>
-      </div>
+
+      {% block script %} {% endblock %}
+
+      <div class="stats-container">{% block content %} {% endblock %}</div>
     </div>
-
-    {% block script %}
-    {% endblock %}
-
-    <div class="stats-container">
-      {% block content %}
-
-      {% endblock %}
-    </div>
-  </div>
-  <nav class="footer">
-    <a class="logout" id="logout" href="{{ url_for('auth.logout') }}">Logout</a>
-  </nav>
-  <script src ="{{ url_for('static', filename = 'view/main.js') }}"></script>
-</body>
+    <nav class="footer">
+      <a class="logout" id="logout" href="{{ url_for('auth.logout') }}"
+        >Logout</a
+      >
+    </nav>
+    <script src="{{ url_for('static', filename = 'view/main.js') }}"></script>
+  </body>
 </html>
