@@ -23,6 +23,8 @@ def find_or_create_room(sid):
 @socketio.on('find_game')
 def on_find_game():
     sid = session['name']
+    session["cancel"] = "cancel-button-active"
+    print(session["cancel"])
     room_id = find_or_create_room(sid)
 
     join_room(room_id)
@@ -48,6 +50,7 @@ def show_private_rooms():
 
 @socketio.on('cancel')
 def cancel():
+    #session['cancel'] = "cancel-button-inactive"
     print("cancel")
     show_rooms()
     sid = session['name']
@@ -83,6 +86,7 @@ def cancel():
 
 @socketio.on('challange')
 def challange(room_id, message, chat_id):
+    session['cancel'] = "cancel-button-active"
     sid = session['name']
     new_log = Chat_log(chat_id = chat_id, message = message, nadawca = User.query.filter(User.name==sid).first().id, link = room_id)
     db.session.add(new_log)
@@ -96,6 +100,7 @@ def challange(room_id, message, chat_id):
 @socketio.on('leave-challange')
 def leave_challange():
     sid = session['name']
+    #session['cancel'] = "cancel-button-inactive"    
 
     for room_id, data in private_rooms.items():
         if sid in data['users']:
@@ -110,6 +115,8 @@ def leave_challange():
 @socketio.on('join')
 def join(room_id):
     sid = session['name']
+    session['cancel'] = "cancel-button-active"    
+
     if private_rooms[room_id]:
         private_rooms[room_id]['users'].append(sid)
         join_room(room_id)
