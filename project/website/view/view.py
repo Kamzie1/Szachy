@@ -14,10 +14,6 @@ view = Blueprint(
 
 @view.route('/')
 def home():
-    if not "canc" in session:
-        session["canc"]="cancel-button-inactive"
-    print(session["canc"])
-    print(session["name"])
     if current_user.is_authenticated:
         return redirect(url_for('view.stats', user_id = current_user.id))
     else:
@@ -63,15 +59,11 @@ def stats(user_id):
         (user_id == Game.white_id) or
         (user_id == Game.black_id)
     ).order_by(Game.date.desc()).all()
-    print(session["cancel"])
-    print(session["name"])
     return render_template('stats.html', games=games, c_user = current_user)
 
 @view.route('/chat<chat_id>',  methods = ['POST', 'GET'])
 @login_required
 def chat(chat_id):
-    print(session["name"])
-    print(session["cancel"])
     chat = Chat.query.filter(chat_id == Chat.id).first()
     if request.method == "POST":
         message = request.form.get("message")

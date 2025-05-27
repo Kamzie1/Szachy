@@ -23,8 +23,15 @@ def find_or_create_room(sid):
 @socketio.on('find_game')
 def on_find_game():
     sid = session['name']
-    session["cancel"] = "cancel-button-active"
-    print(session["cancel"])
+
+    for room, data in rooms.items():
+        if sid in data['users']:
+            return
+
+    for room, data in private_rooms.items():
+        if sid in data['users']:
+            return    
+    
     room_id = find_or_create_room(sid)
 
     join_room(room_id)
@@ -50,7 +57,6 @@ def show_private_rooms():
 
 @socketio.on('cancel')
 def cancel():
-    #session['cancel'] = "cancel-button-inactive"
     print("cancel")
     show_rooms()
     sid = session['name']
@@ -86,8 +92,16 @@ def cancel():
 
 @socketio.on('challange')
 def challange(room_id, message, chat_id):
-    session['cancel'] = "cancel-button-active"
     sid = session['name']
+
+    for room, data in rooms.items():
+        if sid in data['users']:
+            return
+        
+    for room, data in private_rooms.items():
+        if sid in data['users']:
+            return
+    
     new_log = Chat_log(chat_id = chat_id, message = message, nadawca = User.query.filter(User.name==sid).first().id, link = room_id)
     db.session.add(new_log)
     db.session.commit()
@@ -97,35 +111,20 @@ def challange(room_id, message, chat_id):
     print("joined private room")
     show_private_rooms()
 
-@socketio.on('leave-challange')
-def leave_challange():
-    sid = session['name']
-    #session['cancel'] = "cancel-button-inactive"    
-
-    for room_id, data in private_rooms.items():
-        if sid in data['users']:
-            leave_room(room_id)
-            print("left private room")
-            data['users'].remove(sid)
-
-            if not data['users']:
-                del rooms[room_id]
-            break
-
 @socketio.on('join')
 def join(room_id):
-    sid = session['name']
-    session['cancel'] = "cancel-button-active"    
+    sid = session['name'] 
 
-    if private_rooms[room_id]:
-        private_rooms[room_id]['users'].append(sid)
-        join_room(room_id)
-        print('joined private room')
-        show_private_rooms()
-        if len(private_rooms[room_id]['users']) == 2:
-            private_rooms[room_id]['active'] = True
-            print("starting the game!")
-            socketio.emit('start_game', { 'room_id': room_id }, to = room_id)
+    if room_id in private_rooms:
+        if sid not in private_rooms[room_id]['users']:
+            private_rooms[room_id]['users'].append(sid)
+            join_room(room_id)
+            print('joined private room')
+            show_private_rooms()
+            if len(private_rooms[room_id]['users']) == 2:
+                private_rooms[room_id]['active'] = True
+                print("starting the game!")
+                socketio.emit('start_game', { 'room_id': room_id }, to = room_id)
 
 
 
